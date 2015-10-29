@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/Users/lifenglin/dev/tmp/merge/fapp_9-0-568_BRANCH/conf/noahdes'
+let g:netrw_dirhist_2='/Users/lifenglin/dev/tmp/kuainan/uo/Logic'
+let g:netrw_dirhist_3='/Users/lifenglin/dev/tmp/tmp/fapp_9-0-667_BRANCH/conf'
