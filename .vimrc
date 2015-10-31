@@ -70,6 +70,7 @@ let Tlist_Use_Horiz_Window = 0
 let Tlist_Use_Right_Window = 1
 let Tlist_WinWidth = 40
 let tlist_php_settings = 'php;c:class;i:interfaces;d:constant;f:function'
+let Tlist_Auto_Open=1 
 
 map <F11> :call SyntaxCheck()<CR>
 func! SyntaxCheck()
