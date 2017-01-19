@@ -40,8 +40,54 @@ set cindent
 " Wrap lines
 set wrap
 
+" vundle
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+Bundle 'gmarik/vundle'
+Bundle 'fatih/vim-go'
+Bundle 'majutsushi/tagbar'
+filetype plugin indent on
+
 " NERDTree
 map <F2> :NERDTreeToggle<CR>
+
+" go config
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+
+let g:tagbar_type_go = {
+    \ 'ctagstype' : 'go',
+    \ 'kinds'     : [
+        \ 'p:package',
+        \ 'i:imports:1',
+        \ 'c:constants',
+        \ 'v:variables',
+        \ 't:types',
+        \ 'n:interfaces',
+        \ 'w:fields',
+        \ 'e:embedded',
+        \ 'm:methods',
+        \ 'r:constructor',
+        \ 'f:functions'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 't' : 'ctype',
+        \ 'n' : 'ntype'
+    \ },
+    \ 'scope2kind' : {
+        \ 'ctype' : 't',
+        \ 'ntype' : 'n'
+    \ },
+    \ 'ctagsbin'  : 'gotags',
+    \ 'ctagsargs' : '-sort -silent'
+\ }
+
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin configuration
@@ -49,7 +95,7 @@ map <F2> :NERDTreeToggle<CR>
 " taglist
 let Tlist_Auto_Highlight_Tag = 1
 let Tlist_Auto_Open = 0
-let Tlist_Auto_Update = 1
+let Tlist_Auto_Update = 0
 let Tlist_Close_On_Select = 0
 let Tlist_Compact_Format = 0
 let Tlist_Display_Prototype = 0
@@ -70,7 +116,6 @@ let Tlist_Use_Horiz_Window = 0
 let Tlist_Use_Right_Window = 1
 let Tlist_WinWidth = 40
 let tlist_php_settings = 'php;c:class;i:interfaces;d:constant;f:function'
-let Tlist_Auto_Open=1 
 
 map <F11> :call SyntaxCheck()<CR>
 func! SyntaxCheck()
@@ -95,6 +140,10 @@ func! CompileRunGplusplus()
   exec "w" 
   exec "!lua %"
   return
+  elseif ext=='go'
+  exec "w" 
+  exec "!go run %"
+  return
   else
   exec "!echo '好像不是php、lua文件'"
   endif
@@ -115,7 +164,10 @@ nmap <F6> <Esc>:tabnext<CR>
 imap <F6> <Esc>:tabnext<CR>
 nmap <F4> <Esc>:tabnew<CR>
 imap <F4> <Esc>:tabnew<CR>
-map <F9> :TlistToggle<cr>
+nmap <F3> <Esc>:q<CR>
+imap <F3> <Esc>:q<CR>
+map  <F9> <Esc>:TagbarToggle<CR>
+imap <F9> <Esc>:TagbarToggle<CR>
 
 """"""
 "add ctrl+num to switch vim tab

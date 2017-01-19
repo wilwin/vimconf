@@ -64,7 +64,7 @@ if !exists('s:cpo_save')
     let s:cpo_save = &cpo
 endif
 set cpo&vim
-let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
+let Tlist_Ctags_Cmd='/usr/bin/ctags'
 if !exists('loaded_taglist')
     " First time loading the taglist plugin
     "
