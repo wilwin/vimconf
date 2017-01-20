@@ -144,8 +144,12 @@ func! CompileRunGplusplus()
   exec "w" 
   exec "!go run %"
   return
+  elseif ext=='py'
+  exec "w"
+  exec "!python %"
+  return
   else
-  exec "!echo '好像不是php、lua文件'"
+  exec "!echo '好像不是php/lua/go/python文件'"
   endif
   endfunc
 
