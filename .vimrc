@@ -148,6 +148,10 @@ func! CompileRunGplusplus()
   exec "w"
   exec "!python %"
   return
+  elseif ext=='c'
+  exec "w"
+  exec "!echo '-----make-----' && make && echo '-----run-----'       && ./%:r && echo '-----end-----'"
+  return
   else
   exec "!echo '好像不是php/lua/go/python文件'"
   endif
